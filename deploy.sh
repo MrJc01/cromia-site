@@ -14,6 +14,9 @@ echo "=========================================="
 cd "$PROJECT_DIR"
 
 # 2. Atualizar o repositório
+echo "-> Ajustando exceção de propriedade do repositório Git..."
+git config --global --add safe.directory "$PROJECT_DIR" || true
+
 echo "-> Puxando atualizações do Git..."
 git fetch origin main
 git reset --hard origin/main
