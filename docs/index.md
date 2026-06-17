@@ -23,3 +23,18 @@ Para navegar pelo nosso ecossistema técnico, utilize as seções abaixo:
 ## Filosofia de Projetos
 
 Nossa linha de pesquisa foca em **Modelos Pequenos de IA Multilinguagem** (Small Language Models - SLMs) e Swarms de agentes locais, demonstrando que eficiência lógica e arquitetura inteligente podem superar o poder de processamento bruto de supercomputadores comerciais.
+
+---
+
+## 🚀 Futuro & Sustentabilidade
+
+A CromIA é construída sob uma visão de autonomia e sustentabilidade. Temos os seguintes planos estratégicos em andamento para viabilizar e financiar nossa pesquisa:
+
+### 1. Modelos Próprios de Pesquisa
+Planejamos desenvolver modelos totalmente proprietários executados sob diversas arquiteturas de pesquisa otimizadas. Estamos ativamente buscando parcerias, meios de fomento e recursos computacionais para impulsionar o treinamento dessas redes a partir de dados estruturados e limpos.
+
+### 2. crom-agent-cloud
+Para viabilizar financeiramente o ecossistema, planejamos lançar o **crom-agent-cloud**. Trata-se de um sistema de aluguel do agente rodando de forma isolada em instâncias VPS próprias da Crom. Os usuários poderão utilizar as capacidades completas de automação de agentes com alta persistência e estabilidade, sem consumir processamento ou bateria do hardware local.
+
+### 3. Roteador de IA (Crom IA Router)
+Planejamos construir e disponibilizar um roteador inteligente de APIs de IA. O serviço cobrará planos e assinaturas para canalizar requisições de forma econômica e veloz, ajudando diretamente no financiamento de toda a pesquisa de inteligência artificial e processamento de dados da Crom.

@@ -109,17 +109,26 @@ Isso possibilita testes de carga e simulações com o mesmo comportamento do amb
 
         // 4. Seed Projects / Services / Products
         $projects = [
-            ['Think Vetor 1B Hybrid', 'think-vetor-1b-hybrid', 'product', 'beta', 'Assistente de raciocínio lógico que resolve problemas de matemática e lógica complexos localmente.', '🐢', 'https://huggingface.co/spaces/CromIA/think-vetor-1b-hybrid-chat'],
-            ['MicroLM 1M', 'microlm-1m', 'product', 'stable', 'Modelo de linguagem de tamanho extremamente reduzido focado em tarefas rápidas e leves.', '🌖', 'https://huggingface.co/spaces/CromIA/MicroLM-1M-space'],
-            ['Crom Tabnews DB', 'crom-tabnews-db', 'product', 'stable', 'Dataset com mais de 20 mil posts do TabNews estruturados e higienizados.', '📊', 'https://huggingface.co/datasets/CromIA/crom-tabnews-db'],
-            ['vPureDNA v5', 'vpuredna-v5', 'product', 'stable', 'Modelo de 1.7B de parâmetros baseado em Qwen3, refinado para raciocínio biológico e genético.', '🧬', 'https://huggingface.co/CromIA/vpuredna-v5-qwen3-1.7b'],
-            ['crompressor-neuronio', 'crompressor-neuronio', 'project', 'research', 'Redes neurais de compressão de dados baseadas na aproximação contínua de pesos.', '🧠', 'https://github.com/MrJc01/crompressor-neuronio'],
-            ['crompressor-ia', 'crompressor-ia', 'project', 'active', 'Motor inteligente de compressão baseado em análise probabilística e heurísticas de IA.', '⚡', 'https://github.com/MrJc01/crompressor-ia'],
-            ['crom-dbfakeai', 'crom-dbfakeai', 'product', 'beta', 'Biblioteca de modelagem de dados para geração de identidades e transações fictícias coerentes.', '🛡️', 'https://github.com/MrJc01/crom-dbfakeai'],
-            ['crom-video-gen', 'crom-video-gen', 'project', 'research', 'Estudos de geração e interpolação rápida de frames de vídeo usando redes convolucionais.', '🎬', 'https://github.com/MrJc01/crom-video-gen'],
-            ['crompressor', 'crompressor', 'product', 'stable', 'Ferramenta e algoritmo core de empacotamento de dados de alta performance da Crom.', '📦', 'https://github.com/MrJc01/crompressor'],
+            // Products (The Agent ecosystem elements)
+            ['crom-agente-app', 'crom-agente-app', 'product', 'beta', 'Aplicativo desktop completo com interface gráfica baseada em React e empacotada via Tauri. Permite gerenciar conversas, workspace local e terminais.', '💻', '/agent'],
+            ['crom-agente (Daemon & SDK)', 'crom-agente-core', 'product', 'beta', 'O motor core de controle em Go que roda em segundo plano. Oferece gerenciamento de terminais PTY e conexões seguras por sockets IPC e gRPC.', '🔌', '/agent'],
+            ['crom-agente-cli', 'crom-agente-cli', 'product', 'beta', 'CLI rápida e integrada de terminal para automação, scripts locais e inicialização instantânea do agente.', '⚡', '/agent'],
+            ['Crom IDE', 'crom-ide', 'product', 'beta', 'Editor de código integrado em background com agente autônomo baseado no fork de VSCodium.', '📝', '/agent'],
+
+            // Services
             ['Consultoria em IA Local-First', 'consultoria-ia-local', 'service', 'stable', 'Estruturação de infraestrutura interna de IA e Swarms de agentes locais com total privacidade (LGPD).', '🏢', ''],
             ['Otimização e Quantização de Modelos', 'otimizacao-quantizacao', 'service', 'stable', 'Compactação de modelos de linguagem proprietários para execução em CPUs de baixo consumo.', '🛠️', ''],
+
+            // Studies / Research (type: project, status: research)
+            ['Think Vetor 1B Hybrid', 'think-vetor-1b-hybrid', 'project', 'research', 'Assistente de raciocínio lógico que resolve problemas de matemática e lógica complexos localmente.', '🐢', 'https://huggingface.co/spaces/CromIA/think-vetor-1b-hybrid-chat?logs=container'],
+            ['MicroLM 1M', 'microlm-1m', 'project', 'research', 'Modelo de linguagem de tamanho extremamente reduzido focado em tarefas rápidas e leves.', '🌖', 'https://huggingface.co/spaces/CromIA/MicroLM-1M-space'],
+            ['Crom Tabnews DB', 'crom-tabnews-db', 'project', 'research', 'Dataset com mais de 20 mil posts do TabNews estruturados e higienizados.', '📊', 'https://huggingface.co/datasets/CromIA/crom-tabnews-db'],
+            ['vPureDNA v5', 'vpuredna-v5', 'project', 'research', 'Modelo de 1.7B de parâmetros baseado em Qwen3, refinado para raciocínio biológico e genético.', '🧬', 'https://huggingface.co/CromIA/vpuredna-v5-qwen3-1.7b'],
+            ['crom-dbfakeai', 'crom-dbfakeai', 'project', 'research', 'Biblioteca de modelagem de dados para geração de identidades e transações fictícias coerentes.', '🛡️', 'https://github.com/MrJc01/crom-dbfakeai'],
+            ['crompressor', 'crompressor', 'project', 'research', 'Ferramenta e algoritmo core de empacotamento de dados de alta performance da Crom.', '📦', 'https://github.com/MrJc01/crompressor'],
+            ['crompressor-neuronio', 'crompressor-neuronio', 'project', 'research', 'Redes neurais de compressão de dados baseadas na aproximação contínua de pesos.', '🧠', 'https://github.com/MrJc01/crompressor-neuronio'],
+            ['crompressor-ia', 'crompressor-ia', 'project', 'research', 'Motor inteligente de compressão baseado em análise probabilística e heurísticas de IA.', '⚡', 'https://github.com/MrJc01/crompressor-ia'],
+            ['crom-video-gen', 'crom-video-gen', 'project', 'research', 'Estudos de geração e interpolação rápida de frames de vídeo usando redes convolucionais.', '🎬', 'https://github.com/MrJc01/crom-video-gen'],
         ];
 
         foreach ($projects as $proj) {

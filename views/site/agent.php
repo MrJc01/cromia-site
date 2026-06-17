@@ -93,66 +93,82 @@ $this->title = 'CROM Agent - Orquestrador Local de Agentes Autônomos';
             <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">Como ter acesso?</h2>
             <p class="mt-4 text-slate-600 dark:text-slate-400 font-light">
                 O ecossistema Crom está sendo lançado de forma modular. Veja os canais de liberação de cada componente:
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            </p>        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- 1. Agente App -->
-            <div class="bento-card rounded-2xl p-8 flex flex-col justify-between border border-slate-200 dark:border-blue-900/20 bg-white dark:bg-slate-950/40">
+            <div class="bento-card rounded-2xl p-6 flex flex-col justify-between border border-slate-200 dark:border-blue-900/20 bg-white dark:bg-slate-950/40">
                 <div>
                     <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 mb-6">
                         <i data-lucide="monitor" class="w-6 h-6"></i>
                     </div>
-                    <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase font-mono">Disponibilidade Geral</span>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1 mb-3">crom-agente-app</h3>
+                    <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase font-mono">Interface Gráfica</span>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1 mb-3">crom-agente-app</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light">
                         Aplicativo desktop completo com interface gráfica baseada em React e empacotada via Tauri. Permite criar projetos, gerenciar conversas, galeria de mídias e terminais.
                     </p>
                 </div>
-                <div class="mt-8 pt-4 border-t border-slate-100 dark:border-white/5">
+                <div class="mt-6 pt-4 border-t border-slate-100 dark:border-white/5">
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Disponível para download
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Beta em Breve
                     </span>
                 </div>
             </div>
 
             <!-- 2. Agente & SDK -->
-            <div class="bento-card rounded-2xl p-8 flex flex-col justify-between border border-slate-200 dark:border-blue-900/20 bg-white dark:bg-slate-950/40">
+            <div class="bento-card rounded-2xl p-6 flex flex-col justify-between border border-slate-200 dark:border-blue-900/20 bg-white dark:bg-slate-950/40">
                 <div>
                     <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6">
                         <i data-lucide="terminal" class="w-6 h-6"></i>
                     </div>
-                    <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase font-mono">Apoiadores & Contribuidores</span>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1 mb-3">Daemon & SDK</h3>
+                    <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase font-mono">Core & Multi-Provider</span>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1 mb-3">Daemon & SDK</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light mb-3">
-                        Acesso total ao binário core headless (escrito em Go) que roda em segundo plano, CLI unificado (<code class="font-mono text-xs text-blue-600 dark:text-blue-400 bg-blue-500/5 px-1 py-0.5 rounded">crom-agente-cli</code>) comunicando-se por sockets IPC, e gRPC para orquestração de pseudo-terminais (PTY).
+                        Binário de controle headless escrito em Go. Opera com diversos provedores de modelos (como Ollama local para Llama/Qwen, OpenRouter, Claude, Gemini, etc.), oferecendo terminais PTY seguros via IPC socket.
                     </p>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light">
-                        <strong>Futuro Multi-Language:</strong> O SDK está sendo desenhado para transcender o Go, permitindo conexões de clientes em outras linguagens. Estão planejados SDKs oficiais e bindings nativos para **Python**, **TypeScript/Node.js** e **Rust**, estendendo a automação a qualquer stack.
+                    <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-light">
+                        Estudos de integração e wrappers serão disponibilizados em repositórios organizados, com bindings futuros planejados para Python, TypeScript e Rust.
                     </p>
                 </div>
-                <div class="mt-8 pt-4 border-t border-slate-100 dark:border-white/5">
+                <div class="mt-6 pt-4 border-t border-slate-100 dark:border-white/5">
                     <a href="https://crom.run/apoio" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline">
                         Seja um Apoiador <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- 3. IDE Crom -->
-            <div class="bento-card rounded-2xl p-8 flex flex-col justify-between border border-slate-200 dark:border-blue-900/20 bg-white dark:bg-slate-950/40">
+            <!-- 3. Crom Agent Cloud -->
+            <div class="bento-card rounded-2xl p-6 flex flex-col justify-between border border-slate-200 dark:border-blue-900/20 bg-white dark:bg-slate-950/40">
                 <div>
                     <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 mb-6">
-                        <i data-lucide="code" class="w-6 h-6"></i>
+                        <i data-lucide="cloud" class="w-6 h-6"></i>
                     </div>
-                    <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase font-mono">Em Desenvolvimento</span>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1 mb-3">Crom IDE (VS Code Fork)</h3>
+                    <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase font-mono">SaaS / Nuvem Dedicada</span>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1 mb-3">crom-agent-cloud</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light">
-                        O agente de inteligência artificial acoplado diretamente a um fork do editor VS Code (VSCodium). Desenvolva e teste código com o agente agindo em background sem sair da tela.
+                        Sistema de aluguel simplificado do ecossistema do agente rodando em uma VPS própria e segura. Uma alternativa ideal para quem precisa de processamento persistente fora da máquina física.
                     </p>
                 </div>
-                <div class="mt-8 pt-4 border-t border-slate-100 dark:border-white/5">
+                <div class="mt-6 pt-4 border-t border-slate-100 dark:border-white/5">
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Em desenvolvimento ativo
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Planejado
+                    </span>
+                </div>
+            </div>
+
+            <!-- 4. Crom IA Router -->
+            <div class="bento-card rounded-2xl p-6 flex flex-col justify-between border border-slate-200 dark:border-blue-900/20 bg-white dark:bg-slate-950/40">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-500 mb-6">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase font-mono">Monetização & API</span>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1 mb-3">Crom IA Router</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light">
+                        Desenvolvimento de um roteador de APIs de inteligência artificial otimizado. O serviço oferecerá planos acessíveis cobrando chamadas de modelos, auxiliando na sustentabilidade financeira de toda a pesquisa de IA da Crom.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 dark:border-white/5">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Concepção Técnica
                     </span>
                 </div>
             </div>
@@ -282,16 +298,26 @@ $this->title = 'CROM Agent - Orquestrador Local de Agentes Autônomos';
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             <!-- Diagram Column -->
-            <div class="lg:col-span-7 bg-slate-50/50 dark:bg-slate-950/30 border border-slate-200 dark:border-blue-900/10 rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center shadow-inner relative overflow-hidden group/diag min-h-[480px]">
-                <div class="absolute top-4 right-4 z-10">
+            <div class="lg:col-span-7 bg-slate-50/50 dark:bg-slate-950/30 border border-slate-200 dark:border-blue-900/10 rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center shadow-inner relative overflow-hidden group/diag min-h-[520px]">
+                <div class="absolute top-4 right-4 z-10 flex items-center space-x-2">
                     <button onclick="toggleDiagramFullscreen()" class="p-2 rounded-xl bg-white/90 hover:bg-white dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-slate-400 transition-all duration-200 shadow-md cursor-pointer hover:scale-105" title="Ver em Tela Cheia">
                         <i data-lucide="maximize-2" class="w-4.5 h-4.5"></i>
                     </button>
                 </div>
-                <h4 class="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase mb-6">Diagrama de Arquitetura Local</h4>
                 
-                <!-- Mermaid Container -->
-                <div id="diagram-container" class="mermaid w-full max-w-lg select-none">
+                <!-- Diagram Tab Buttons Selector (Simulating UX Specialist) -->
+                <div class="flex items-center space-x-2 mb-6 bg-slate-100 dark:bg-slate-900/60 p-1 rounded-xl border border-slate-200 dark:border-white/5 z-10">
+                    <button onclick="switchDiagram('arch')" id="diag-btn-arch" class="diag-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm transition-all duration-200 cursor-pointer">
+                        Arquitetura Local
+                    </button>
+                    <button onclick="switchDiagram('ux')" id="diag-btn-ux" class="diag-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-200 cursor-pointer">
+                        Jornada & UX de Conexão
+                    </button>
+                </div>
+
+                <!-- Diagram Container Arch (Active) -->
+                <div id="diagram-container-arch" class="mermaid-diagram-block w-full max-w-lg select-none block">
+                    <div id="diagram-container" class="mermaid w-full">
 graph TD
     %% Componentes
     App["Tauri App (crom-agente-app)"] -->|HTTP / WS| Daemon
@@ -321,6 +347,40 @@ graph TD
     ProcessCtrl -->|Fork / Exec| Bash["Bash Terminals"]
     MediaCtrl -->|wmctrl| X11["X11 Display Server"]
     MediaCtrl -->|arecord| Mic["Audio Input"]
+                    </div>
+                </div>
+
+                <!-- Diagram Container UX (Hidden) -->
+                <div id="diagram-container-ux" class="mermaid-diagram-block w-full max-w-lg select-none hidden">
+                    <div id="diagram-container-ux-raw" class="mermaid w-full">
+graph TD
+    %% Jornada de Interação do Usuário (UI/UX)
+    User["Novo Visitante"] -->|Navega pelo Site| LandingPage["Landing Page (CromIA)"]
+    LandingPage -->|Explora docs/pesquisas| HF["Playground Hugging Face / Spaces"]
+    LandingPage -->|Interessado no Agente| Downloads["Downloads Section (/agent)"]
+    
+    Downloads -->|Geral: Baixa App| TauriApp["crom-agente-app (React/Tauri)"]
+    Downloads -->|Apoiador: Acesso SDK/Core| GoDaemon["Headless Core (Go Daemon)"]
+    Downloads -->|Dev: Editor Integrado| CromIDE["Crom IDE (VS Code Fork)"]
+    
+    %% Configuração & Inicialização do Cliente
+    TauriApp -->|1. Abre App & Cria Projeto| Workspace["Workspace Local"]
+    TauriApp -->|2. Auto-detecta/Conecta| GoDaemon
+    
+    GoDaemon -->|Porta 9090/9091| API["Servidor local HTTP/WS/gRPC"]
+    GoDaemon -->|Auto-detecta hardware| LLM["Ollama (Local LLMs) / APIs Cloud"]
+    
+    %% Loop de Ação do Cliente
+    TauriApp -->|3. Prompt do Usuário| AgentLoop["Loop ReAct (Go Daemon)"]
+    AgentLoop -->|4. Toma Decisão| ProcessControl["PTY Terminal / Sandbox"]
+    ProcessControl -->|Executa Scripts/Testes| FileSystem["Arquivos Locais"]
+    FileSystem -->|Gera Outputs/Alterações| TauriApp
+    
+    %% Conexão Wi-Fi Mobile
+    TauriApp -->|Gera QR Code| QRCode["QR Code local"]
+    QRCode -->|Pinch-to-Scan| Mobile["Mobile Companion / Browser no Celular"]
+    Mobile -->|Interação Remota na rede local| GoDaemon
+                    </div>
                 </div>
             </div>
 
@@ -348,14 +408,16 @@ graph TD
                 </div>
 
                 <div class="p-6 bg-slate-50/20 dark:bg-slate-900/10 border border-slate-200 dark:border-white/5 rounded-2xl flex-grow">
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">4. Base de Pesquisa (crom-agente 4 & 5)</h3>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">4. Multi-provedores & Modularidade</h3>
                     <p class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">
-                        Consolidação de estudos práticos nos repositórios <code class="font-mono text-xs text-cyan-600 dark:text-cyan-400 bg-cyan-500/5 px-1.5 py-0.5 rounded">crom-agente4</code> (PTY e editor) e <code class="font-mono text-xs text-cyan-600 dark:text-cyan-400 bg-cyan-500/5 px-1.5 py-0.5 rounded">crom-agente5</code> (Tauri app), projetando a nova camada SDK para linguagens como Python, Node.js e Rust no futuro.
+                        O agente foi concebido para operar de forma flexível com múltiplos provedores de inteligência artificial, como Ollama (execução local), OpenRouter, Claude, Gemini, entre outros. Novos repositórios organizados serão disponibilizados em breve para unificar o ecossistema.
                     </p>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <!-- Fullscreen Diagram Modal -->
     <div id="diagram-modal" class="fixed inset-0 z-[99999] hidden bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-between p-6 transition-all duration-300 opacity-0">
@@ -369,7 +431,7 @@ graph TD
         <!-- Header Info -->
         <div class="text-center mt-4 mb-6 max-w-2xl px-4 z-[101]">
             <h3 class="text-2xl font-bold text-white mb-1">Diagrama de Arquitetura Local</h3>
-            <p class="text-slate-400 text-sm font-light">Visão técnica do ecossistema crom-agente consolidando estudos de crom-agente4 e crom-agente5</p>
+            <p class="text-slate-400 text-sm font-light">Visão técnica do ecossistema crom-agente e sua jornada de execução local e em nuvem</p>
         </div>
 
         <!-- Scrollable content area containing diagram -->
@@ -477,6 +539,36 @@ graph TD
         }
     }
 
+    // Diagram tab switcher (Architecture vs UX journey)
+    function switchDiagram(type) {
+        // Toggle blocks
+        const archBlock = document.getElementById('diagram-container-arch');
+        const uxBlock = document.getElementById('diagram-container-ux');
+        
+        if (type === 'arch') {
+            archBlock.classList.remove('hidden');
+            archBlock.classList.add('block');
+            uxBlock.classList.remove('block');
+            uxBlock.classList.add('hidden');
+        } else {
+            uxBlock.classList.remove('hidden');
+            uxBlock.classList.add('block');
+            archBlock.classList.remove('block');
+            archBlock.classList.add('hidden');
+        }
+        
+        // Toggle buttons classes
+        const btnArch = document.getElementById('diag-btn-arch');
+        const btnUx = document.getElementById('diag-btn-ux');
+        if (type === 'arch') {
+            btnArch.className = 'diag-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm transition-all duration-200 cursor-pointer';
+            btnUx.className = 'diag-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-200 cursor-pointer';
+        } else {
+            btnUx.className = 'diag-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm transition-all duration-200 cursor-pointer';
+            btnArch.className = 'diag-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all duration-200 cursor-pointer';
+        }
+    }
+
     // Fullscreen diagram functions and zooming
     let currentDiagramZoom = 100;
 
@@ -506,10 +598,18 @@ graph TD
 
     function toggleDiagramFullscreen() {
         const modal = document.getElementById('diagram-modal');
-        const originalSvg = document.querySelector('#diagram-container svg');
+        const activeBlock = document.querySelector('.mermaid-diagram-block.block');
+        const originalSvg = activeBlock ? activeBlock.querySelector('svg') : null;
         const modalContent = document.getElementById('modal-diagram-content');
+        const modalTitle = modal ? modal.querySelector('h3') : null;
         
         if (originalSvg && modal && modalContent) {
+            // Update title in modal dynamically depending on active diagram
+            if (modalTitle) {
+                const isActiveArch = activeBlock.id === 'diagram-container-arch';
+                modalTitle.textContent = isActiveArch ? 'Diagrama de Arquitetura Local' : 'Diagrama de Jornada & UX de Conexão';
+            }
+
             // Append modal directly to body to escape parent stacking context and be strictly on front
             if (modal.parentElement !== document.body) {
                 document.body.appendChild(modal);

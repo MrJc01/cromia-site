@@ -60,16 +60,16 @@ $this->title = 'CROM | Autonomia Técnica e Soberania Digital - CromIA';
         <!-- Metrics Stats -->
         <div class="grid grid-cols-3 gap-8 md:gap-16 mt-16 max-w-xl w-full border-t border-slate-200 dark:border-white/5 pt-8 font-mono">
             <div class="text-center">
-                <div class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">10+</div>
-                <div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">Modelos SLM</div>
+                <div class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white uppercase tracking-tighter">Local-First</div>
+                <div class="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Privacidade Padrão</div>
             </div>
             <div class="text-center">
-                <div class="text-3xl md:text-4xl font-extrabold text-rose-500">20k+</div>
-                <div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">Posts Dataset</div>
+                <div class="text-xl sm:text-2xl font-extrabold text-rose-500 uppercase tracking-tighter">Multi-LLM</div>
+                <div class="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Híbrido & Flexível</div>
             </div>
             <div class="text-center">
-                <div class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">100%</div>
-                <div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">Acurácia Math</div>
+                <div class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white uppercase tracking-tighter">Soberana</div>
+                <div class="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Autonomia Técnica</div>
             </div>
         </div>
     </div>
