@@ -9,7 +9,7 @@ use yii\helpers\Url;
 
 $this->title = 'CROM Agent - Orquestrador Local de Agentes Autônomos';
 ?>
-<div class="agent-page max-w-7xl mx-auto relative overflow-hidden">
+<div class="agent-page max-w-6xl mx-auto relative overflow-hidden">
     <!-- Blueish Ambient Nebulas -->
     <div class="glow-blue top-[-150px] left-[-150px]"></div>
     <div class="glow-cyan top-[30%] right-[-150px]"></div>
@@ -186,7 +186,7 @@ $this->title = 'CROM Agent - Orquestrador Local de Agentes Autônomos';
                     </span>
                     <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Estamos nos preparando para o lançamento da versão Beta!</h4>
                     <p class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">
-                        Nosso objetivo de longo prazo é a soberania tecnológica. Temos o plano de estabelecer uma meta de doações e faturamento para, assim que atingida, disponibilizar todo o código-fonte do ecossistema de forma 100% aberta sob a licença **MIT**.
+                        Nosso objetivo de longo prazo é a soberania tecnológica. Temos o plano de desenvolver LLMs próprias sob diferentes arquiteturas de estudo avançadas. Para viabilizar esse projeto e construir **LLMs especialistas únicas no Brasil e no mundo**, precisamos de financiamento e suporte monetário para custos de GPU e pesquisa. Ajude-nos a financiar essa jornada apoiando o projeto!
                     </p>
                 </div>
             </div>

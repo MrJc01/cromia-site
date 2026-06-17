@@ -349,7 +349,7 @@ $this->title = 'CROM | Autonomia Técnica e Soberania Digital - CromIA';
                 Pronto para Construir?
             </h2>
             <p class="mt-4 text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                Acesse nossos repositórios open-source, leia a documentação e experimente os modelos hospedados em nosso hub.
+                Acesse nossos repositórios open-source, leia a documentação e apoie nossa causa. Nosso plano é desenvolver LLMs próprias em diferentes arquiteturas de estudo avançadas. Para construir **LLMs especialistas únicas no Brasil e no mundo**, precisamos de fomento monetário para financiar nossa pesquisa e infraestrutura de GPU.
             </p>
 
             <div class="mt-10 flex flex-wrap justify-center gap-4">

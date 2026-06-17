@@ -31,7 +31,7 @@ Nossa linha de pesquisa foca em **Modelos Pequenos de IA Multilinguagem** (Small
 A CromIA é construída sob uma visão de autonomia e sustentabilidade. Temos os seguintes planos estratégicos em andamento para viabilizar e financiar nossa pesquisa:
 
 ### 1. Modelos Próprios de Pesquisa
-Planejamos desenvolver modelos totalmente proprietários executados sob diversas arquiteturas de pesquisa otimizadas. Estamos ativamente buscando parcerias, meios de fomento e recursos computacionais para impulsionar o treinamento dessas redes a partir de dados estruturados e limpos.
+Temos o plano ambicioso de desenvolver modelos de linguagem (LLMs) proprietários executados sob diferentes arquiteturas de estudo avançadas. Para tornar essa pesquisa viável e construir **LLMs especialistas únicas no Brasil e no mundo**, precisamos de financiamento, poder computacional (GPUs) e suporte monetário. Estamos buscando ativamente doações, parcerias de pesquisa e meios de fomento para financiar esses treinamentos a partir de dados estruturados e limpos.
 
 ### 2. crom-agent-cloud
 Para viabilizar financeiramente o ecossistema, planejamos lançar o **crom-agent-cloud**. Trata-se de um sistema de aluguel do agente rodando de forma isolada em instâncias VPS próprias da Crom. Os usuários poderão utilizar as capacidades completas de automação de agentes com alta persistência e estabilidade, sem consumir processamento ou bateria do hardware local.
