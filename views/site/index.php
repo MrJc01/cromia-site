@@ -72,7 +72,51 @@ $this->title = 'CROM | Autonomia Técnica e Soberania Digital - CromIA';
                 <div class="text-[11px] text-slate-500 uppercase tracking-wider mt-1">Acurácia Math</div>
             </div>
         </div>
-    <    <!-- PROJETOS DESTAQUE -->
+    </div>
+
+    <!-- SECTION CROM AGENTE -->
+    <div class="py-20 border-t border-slate-200 dark:border-white/5 relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Side: Interactive Graphics / Logos -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
+                <!-- Floating Ambient Glow (Blueish/Cyan) -->
+                <div class="absolute w-72 h-72 rounded-full bg-cyan-500/10 dark:bg-cyan-500/5 blur-3xl pointer-events-none"></div>
+                
+                <!-- Floating Agent Logo with Hover Swapping -->
+                <div class="relative w-48 h-48 rounded-full bg-gradient-to-tr from-cyan-500/20 via-blue-500/10 to-indigo-500/30 border border-cyan-500/20 dark:border-white/5 flex items-center justify-center shadow-2xl dark:shadow-[0_0_80px_rgba(6,182,212,0.15)] group backdrop-blur-[8px]">
+                    <!-- Primary Logo (normal state, fades out on hover) -->
+                    <img src="<?= Url::to('@web/images/agent-logo-primary.png') ?>" alt="Crom Agent Logo Primary" class="absolute h-28 w-auto transform transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-90 drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                    <!-- Secondary Logo (hover state, fades in on hover) -->
+                    <img src="<?= Url::to('@web/images/agent-logo-secondary.png') ?>" alt="Crom Agent Logo Secondary" class="absolute h-28 w-auto transform transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 drop-shadow-[0_0_15px_rgba(6,182,212,0.45)]">
+                </div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="lg:col-span-7 space-y-6">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span> Lançamento Beta
+                    </span>
+                    <h2 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-4">
+                        Conheça o <span class="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">crom-agente</span>
+                    </h2>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    Nossa engine local-first para execução de agentes autônomos de IA e privacidade absoluta de dados em sua máquina. O ecossistema unifica um aplicativo Desktop gráfico (Tauri + React), um CLI rápido para terminais nativos e uma camada de SDK multi-linguagens (suportando Go e futuramente Python, TypeScript e Rust).
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="<?= Url::to(['site/agent']) ?>" class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg transition duration-300">
+                        Explorar crom-agente
+                    </a>
+                    <a href="https://crom.run/apoio" target="_blank" rel="noopener" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900/60 dark:hover:bg-slate-900 border border-slate-200 dark:border-white/5 text-slate-700 dark:text-slate-200 font-semibold rounded-xl transition duration-300">
+                        Seja um Apoiador
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJETOS DESTAQUE -->
     <div class="py-20 border-t border-slate-200 dark:border-white/5">
         <div class="flex items-end justify-between mb-12">
             <div>

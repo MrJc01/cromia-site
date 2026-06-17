@@ -25,7 +25,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'LGIHMp9_StjtrTPEO-ARF26l1wjl_FJk',
+            'cookieValidationKey' => getenv('CROMIA_COOKIE_VALIDATION_KEY') ?: 'LGIHMp9_StjtrTPEO-ARF26l1wjl_FJk',
         ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
