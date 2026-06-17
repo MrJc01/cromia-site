@@ -44,8 +44,12 @@ $this->title = $title . ' - CromIA';
         <!-- Title Field -->
         <?= $form->field($model, 'title')->textInput(['placeholder' => 'ex: Como fiz uma micro-LLM atingir 100% de acurácia']) ?>
 
-        <!-- Author Group Dropdown / Input -->
-        <?= $form->field($model, 'author_group')->textInput(['placeholder' => 'ex: CromIA Core, CromIA Logic, CromIA Data']) ?>
+        <!-- Author Group (only editable by admin) -->
+        <?php if (Yii::$app->user->identity?->role === 'admin'): ?>
+            <?= $form->field($model, 'author_group')->textInput(['placeholder' => 'ex: CromIA Core, CromIA Logic, CromIA Data']) ?>
+        <?php else: ?>
+            <?= Html::activeHiddenInput($model, 'author_group') ?>
+        <?php endif; ?>
 
         <!-- Slug (Optional, auto-generated if left blank) -->
         <?= $form->field($model, 'slug')->textInput([
