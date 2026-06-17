@@ -25,6 +25,11 @@ $this->title = 'Gerenciamento de Usuários - CromIA';
                     Administre os membros da plataforma CromIA.
                 </p>
             </div>
+            <div>
+                <a href="<?= Url::to(['panel/create-user']) ?>" class="px-5 py-2.5 bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white text-xs font-bold rounded-lg transition duration-200 flex items-center gap-1 shadow-md shadow-rose-500/10">
+                    <span class="material-symbols-outlined text-xs">person_add</span> Novo Usuário
+                </a>
+            </div>
         </div>
     </div>
 

@@ -35,19 +35,22 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%user}}';
     }
 
+    const SCENARIO_CREATE = 'create';
+
     /**
      * {@inheritdoc}
      */
     public function rules(): array
     {
         return [
-            [['username'], 'required'],
+            [['username', 'role'], 'required'],
             [['username'], 'unique'],
             [['email'], 'email'],
             [['email'], 'unique'],
             [['bio_description'], 'string'],
             [['role'], 'string', 'max' => 30],
             [['new_password', 'confirm_password'], 'string', 'min' => 4],
+            [['new_password'], 'required', 'on' => self::SCENARIO_CREATE],
             ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => 'As senhas não coincidem.'],
         ];
     }

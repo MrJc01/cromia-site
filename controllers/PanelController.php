@@ -33,7 +33,7 @@ class PanelController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create-project', 'update-project', 'delete-project', 'users'],
+                        'actions' => ['create-project', 'update-project', 'delete-project', 'users', 'create-user'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity?->role === 'admin';
                         },
@@ -216,6 +216,27 @@ class PanelController extends Controller
 
         return $this->render('profile', [
             'model' => $model,
+        ]);
+    }
+
+    /**
+     * Create User (admin only)
+     */
+    public function actionCreateUser()
+    {
+        $model = new User(['scenario' => User::SCENARIO_CREATE]);
+        $model->role = 'member'; // default role
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash('success', 'Usuário criado com sucesso.');
+                return $this->redirect(['users']);
+            }
+        }
+
+        return $this->render('user-form', [
+            'model' => $model,
+            'title' => 'Criar Usuário',
         ]);
     }
 
