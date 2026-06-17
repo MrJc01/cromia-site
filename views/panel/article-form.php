@@ -51,6 +51,19 @@ $this->title = $title . ' - CromIA';
             <?= Html::activeHiddenInput($model, 'author_group') ?>
         <?php endif; ?>
 
+        <!-- Author Selection (only editable by admin) -->
+        <?php if (Yii::$app->user->identity?->role === 'admin'): ?>
+            <?php
+                $usersList = \yii\helpers\ArrayHelper::map(\app\models\User::find()->orderBy(['username' => SORT_ASC])->all(), 'id', 'username');
+            ?>
+            <?= $form->field($model, 'author_id')->dropDownList($usersList, [
+                'prompt' => 'Selecione o Autor...',
+                'class' => 'bg-white dark:bg-slate-900/80 border border-slate-250 dark:border-white/5 rounded-xl px-4.5 py-3 text-slate-800 dark:text-white focus:outline-none focus:border-rose-500/40 focus:ring-1 focus:ring-rose-500/30 transition duration-200 w-full font-light'
+            ])->label('Autor da Publicação') ?>
+        <?php else: ?>
+            <?= Html::activeHiddenInput($model, 'author_id') ?>
+        <?php endif; ?>
+
         <!-- Slug (Optional, auto-generated if left blank) -->
         <?= $form->field($model, 'slug')->textInput([
             'placeholder' => 'Deixe em branco para gerar automaticamente a partir do título',
