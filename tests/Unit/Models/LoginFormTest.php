@@ -36,7 +36,7 @@ final class LoginFormTest extends \Codeception\Test\Unit
         $this->_model = new LoginForm(
             new Security(),
             [
-                'username' => 'demo',
+                'username' => 'admin',
                 'password' => 'wrong_password',
             ],
         );
@@ -51,8 +51,8 @@ final class LoginFormTest extends \Codeception\Test\Unit
         $this->_model = new LoginForm(
             new Security(),
             [
-                'username' => 'demo',
-                'password' => 'demo',
+                'username' => 'admin',
+                'password' => 'admin',
             ],
         );
 

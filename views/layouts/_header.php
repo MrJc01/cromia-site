@@ -87,9 +87,9 @@ $items = [
                             $urlParts = explode('/', $urlRoute);
                             $urlController = $urlParts[0] ?? '';
                             if ($urlController === 'site') {
-                                $isActive = (Yii::$app->controller->route === $urlRoute);
+                                $isActive = (Yii::$app->controller && Yii::$app->controller->route === $urlRoute);
                             } else {
-                                $isActive = (Yii::$app->controller->id === $urlController);
+                                $isActive = (Yii::$app->controller && Yii::$app->controller->id === $urlController);
                             }
                         }
                         
@@ -145,9 +145,9 @@ $items = [
                     $urlParts = explode('/', ltrim($item['url'][0], '/'));
                     $urlController = $urlParts[0] ?? '';
                     if ($urlController === 'site') {
-                        $isActive = (Yii::$app->controller->route === ltrim($item['url'][0], '/'));
+                        $isActive = (Yii::$app->controller && Yii::$app->controller->route === ltrim($item['url'][0], '/'));
                     } else {
-                        $isActive = (Yii::$app->controller->id === $urlController);
+                        $isActive = (Yii::$app->controller && Yii::$app->controller->id === $urlController);
                     }
                 }
                 
