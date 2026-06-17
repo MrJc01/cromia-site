@@ -36,7 +36,7 @@ class Article extends ActiveRecord
         return [
             [['title', 'slug', 'content', 'author_group'], 'required'],
             [['summary', 'content'], 'string'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['created_at', 'updated_at', 'author_id'], 'integer'],
             [['title', 'slug', 'author_group'], 'string', 'max' => 255],
             [['slug'], 'unique'],
         ];
@@ -50,6 +50,9 @@ class Article extends ActiveRecord
         if (parent::beforeValidate()) {
             if (empty($this->slug) && !empty($this->title)) {
                 $this->slug = \yii\helpers\Inflector::slug($this->title);
+            }
+            if (empty($this->author_id) && !Yii::$app->user->isGuest) {
+                $this->author_id = (int)Yii::$app->user->id;
             }
             return true;
         }
@@ -86,6 +89,15 @@ class Article extends ActiveRecord
             'author_group' => 'Grupo Autor',
             'created_at' => 'Criado Em',
             'updated_at' => 'Atualizado Em',
+            'author_id' => 'Autor ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthor()
+    {
+        return $this->hasOne(User::class, ['id' => 'author_id']);
     }
 }

@@ -4,49 +4,114 @@ declare(strict_types=1);
 
 namespace app\models;
 
-use yii\base\BaseObject;
+use Yii;
+use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
-class User extends BaseObject implements IdentityInterface
+/**
+ * User model class for table "user".
+ *
+ * @property int $id
+ * @property string $username
+ * @property string $password_hash
+ * @property string|null $email
+ * @property string $role
+ * @property string|null $bio_description
+ * @property string|null $auth_key
+ * @property string|null $access_token
+ * @property int $created_at
+ * @property int $updated_at
+ */
+class User extends ActiveRecord implements IdentityInterface
 {
-    public int|string $id = '';
-    public string $username = '';
-    public string $passwordHash = '';
-    public string $authKey = '';
-    public string $accessToken = '';
-    public string $role = ''; // 'admin' or 'member'
+    public ?string $new_password = null;
+    public ?string $confirm_password = null;
 
-    private static function getUsers(): array
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName(): string
     {
-        $adminHash = getenv('CROMIA_ADMIN_HASH') ?: '$2y$10$YjQh2Lvp5Ckc3JkuVhD8oOH3Y0ArG6E/3wp6zp.yWoJ8vjgxMCpSG'; // default 'admin'
-        $memberHash = getenv('CROMIA_MEMBER_HASH') ?: '$2y$10$MzQbg1cSY91MdWJaaz95Te2bpjRuS9nxG4/ARThg.H7nhKn2caIXy'; // default 'cromia'
-        
+        return '{{%user}}';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules(): array
+    {
         return [
-            '100' => [
-                'id' => '100',
-                'username' => 'admin',
-                'passwordHash' => $adminHash,
-                'authKey' => 'test100key',
-                'accessToken' => '100-token',
-                'role' => 'admin',
-            ],
-            '101' => [
-                'id' => '101',
-                'username' => 'cromia',
-                'passwordHash' => $memberHash,
-                'authKey' => 'test101key',
-                'accessToken' => '101-token',
-                'role' => 'member',
-            ],
+            [['username'], 'required'],
+            [['username'], 'unique'],
+            [['email'], 'email'],
+            [['email'], 'unique'],
+            [['bio_description'], 'string'],
+            [['role'], 'string', 'max' => 30],
+            [['new_password', 'confirm_password'], 'string', 'min' => 4],
+            ['confirm_password', 'compare', 'compareAttribute' => 'new_password', 'message' => 'As senhas não coincidem.'],
         ];
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels(): array
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Usuário',
+            'email' => 'E-mail',
+            'role' => 'Função',
+            'bio_description' => 'Biografia / Descrição',
+            'new_password' => 'Nova Senha',
+            'confirm_password' => 'Confirmar Nova Senha',
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function beforeSave($insert): bool
+    {
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->created_at = time();
+                if (empty($this->auth_key)) {
+                    $this->auth_key = Yii::$app->security->generateRandomString();
+                }
+            }
+            $this->updated_at = time();
+
+            if (!empty($this->new_password)) {
+                $this->password_hash = Yii::$app->security->generatePasswordHash($this->new_password);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // Compatibility getters for LoginForm and other legacy code
+    public function getPasswordHash(): string
+    {
+        return $this->password_hash;
+    }
+
+    public function getAuthKey(): string|null
+    {
+        return $this->auth_key;
+    }
+
+    public function getAccessToken(): string|null
+    {
+        return $this->access_token;
+    }
+
     /**
      * {@inheritdoc}
      */
     public static function findIdentity($id): static|null
     {
-        $users = self::getUsers();
-        return isset($users[$id]) ? new static($users[$id]) : null;
+        return static::findOne($id);
     }
 
     /**
@@ -54,13 +119,7 @@ class User extends BaseObject implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null): static|null
     {
-        foreach (self::getUsers() as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return static::findOne(['access_token' => $token]);
     }
 
     /**
@@ -71,19 +130,13 @@ class User extends BaseObject implements IdentityInterface
      */
     public static function findByUsername(string $username): static|null
     {
-        foreach (self::getUsers() as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return static::findOne(['username' => $username]);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getId(): int|string
+    public function getId(): string|int|null
     {
         return $this->id;
     }
@@ -91,16 +144,8 @@ class User extends BaseObject implements IdentityInterface
     /**
      * {@inheritdoc}
      */
-    public function getAuthKey(): string|null
-    {
-        return $this->authKey;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function validateAuthKey($authKey): bool
     {
-        return $this->authKey === $authKey;
+        return $this->auth_key === $authKey;
     }
 }

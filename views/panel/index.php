@@ -26,6 +26,14 @@ $currentUser = Yii::$app->user->identity;
                 </p>
             </div>
             <div class="flex items-center gap-3">
+                <a href="<?= Url::to(['panel/profile']) ?>" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl transition duration-300 text-sm flex items-center gap-1 shadow-md shadow-rose-500/10">
+                    <span class="material-symbols-outlined text-sm">manage_accounts</span> Editar Perfil
+                </a>
+                <?php if ($currentUser?->role === 'admin'): ?>
+                    <a href="<?= Url::to(['panel/users']) ?>" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900/60 dark:hover:bg-slate-900 border border-slate-200 dark:border-white/5 text-slate-700 dark:text-slate-200 font-semibold rounded-xl transition duration-300 text-sm backdrop-blur-sm flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">group</span> Usuários
+                    </a>
+                <?php endif; ?>
                 <a href="<?= Url::to(['/site/index']) ?>" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900/60 dark:hover:bg-slate-900 border border-slate-200 dark:border-white/5 text-slate-700 dark:text-slate-200 font-semibold rounded-xl transition duration-300 text-sm backdrop-blur-sm">
                     Visualizar Site
                 </a>
@@ -55,7 +63,7 @@ $currentUser = Yii::$app->user->identity;
                         <thead>
                             <tr class="border-b border-slate-200 dark:border-white/5">
                                 <th class="pb-3 text-slate-500 dark:text-slate-400 font-semibold">Título</th>
-                                <th class="pb-3 text-slate-500 dark:text-slate-400 font-semibold">Grupo Autor</th>
+                                <th class="pb-3 text-slate-500 dark:text-slate-400 font-semibold">Autor</th>
                                 <th class="pb-3 text-slate-500 dark:text-slate-400 font-semibold">Data</th>
                                 <th class="pb-3 text-right text-slate-500 dark:text-slate-400 font-semibold">Ações</th>
                             </tr>
@@ -67,24 +75,34 @@ $currentUser = Yii::$app->user->identity;
                                 </tr>
                             <?php else: ?>
                                 <?php foreach ($articles as $article): ?>
+                                    <?php
+                                        // User can manage if they are admin or if they are the author of this article
+                                        $canManage = ($currentUser?->role === 'admin' || (int)$article->author_id === (int)$currentUser?->id);
+                                    ?>
                                     <tr class="group hover:bg-slate-100/50 dark:hover:bg-slate-900/10 transition duration-150">
                                         <td class="py-3.5 pr-3 text-slate-700 dark:text-slate-200 font-medium group-hover:text-slate-900 dark:group-hover:text-white max-w-[200px] truncate">
                                             <?= Html::encode($article->title) ?>
                                         </td>
-                                        <td class="py-3.5 text-xs text-rose-600 dark:text-rose-400/80 font-mono"><?= Html::encode($article->author_group) ?></td>
+                                        <td class="py-3.5 text-xs text-rose-650 dark:text-rose-450 font-semibold">
+                                            <?= Html::encode($article->author ? $article->author->username : $article->author_group) ?>
+                                        </td>
                                         <td class="py-3.5 text-xs text-slate-500"><?= date('d/m/Y', $article->created_at) ?></td>
                                         <td class="py-3.5 text-right flex items-center justify-end gap-2.5">
-                                            <a href="<?= Url::to(['panel/update-article', 'id' => $article->id]) ?>" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition duration-150" title="Editar">
-                                                <span class="material-symbols-outlined text-sm">edit</span>
-                                            </a>
-                                            <?= Html::a('<span class="material-symbols-outlined text-sm">delete</span>', ['panel/delete-article', 'id' => $article->id], [
-                                                'class' => 'text-slate-400 dark:text-slate-500 hover:text-rose-500 transition duration-150',
-                                                'data' => [
-                                                    'confirm' => 'Tem certeza de que deseja excluir este artigo?',
-                                                    'method' => 'post',
-                                                ],
-                                                'title' => 'Excluir'
-                                            ]) ?>
+                                            <?php if ($canManage): ?>
+                                                <a href="<?= Url::to(['panel/update-article', 'id' => $article->id]) ?>" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition duration-150" title="Editar">
+                                                    <span class="material-symbols-outlined text-sm">edit</span>
+                                                </a>
+                                                <?= Html::a('<span class="material-symbols-outlined text-sm">delete</span>', ['panel/delete-article', 'id' => $article->id], [
+                                                    'class' => 'text-slate-400 dark:text-slate-500 hover:text-rose-500 transition duration-150',
+                                                    'data' => [
+                                                        'confirm' => 'Tem certeza de que deseja excluir este artigo?',
+                                                        'method' => 'post',
+                                                    ],
+                                                    'title' => 'Excluir'
+                                                ]) ?>
+                                            <?php else: ?>
+                                                <span class="text-[10px] text-slate-400 dark:text-slate-600 uppercase font-bold tracking-wider italic">Sem Permissão</span>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -103,9 +121,11 @@ $currentUser = Yii::$app->user->identity;
                         <span class="material-symbols-outlined text-amber-400">deployed_code</span>
                         Projetos, Produtos & Serviços
                     </h2>
-                    <a href="<?= Url::to(['panel/create-project']) ?>" class="px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-500 hover:from-amber-500 hover:to-orange-400 text-white text-xs font-bold rounded-lg transition duration-200 flex items-center gap-1">
-                        <span class="material-symbols-outlined text-xs">add</span> Novo Registro
-                    </a>
+                    <?php if ($currentUser?->role === 'admin'): ?>
+                        <a href="<?= Url::to(['panel/create-project']) ?>" class="px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-500 hover:from-amber-500 hover:to-orange-400 text-white text-xs font-bold rounded-lg transition duration-200 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-xs">add</span> Novo Registro
+                        </a>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Projects Table -->
@@ -160,17 +180,21 @@ $currentUser = Yii::$app->user->identity;
                                             </span>
                                         </td>
                                         <td class="py-3.5 text-right flex items-center justify-end gap-2.5">
-                                            <a href="<?= Url::to(['panel/update-project', 'id' => $project->id]) ?>" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition duration-150" title="Editar">
-                                                <span class="material-symbols-outlined text-sm">edit</span>
-                                            </a>
-                                            <?= Html::a('<span class="material-symbols-outlined text-sm">delete</span>', ['panel/delete-project', 'id' => $project->id], [
-                                                'class' => 'text-slate-400 dark:text-slate-500 hover:text-rose-500 transition duration-150',
-                                                'data' => [
-                                                    'confirm' => 'Tem certeza de que deseja excluir este item?',
-                                                    'method' => 'post',
-                                                ],
-                                                'title' => 'Excluir'
-                                            ]) ?>
+                                            <?php if ($currentUser?->role === 'admin'): ?>
+                                                <a href="<?= Url::to(['panel/update-project', 'id' => $project->id]) ?>" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition duration-150" title="Editar">
+                                                    <span class="material-symbols-outlined text-sm">edit</span>
+                                                </a>
+                                                <?= Html::a('<span class="material-symbols-outlined text-sm">delete</span>', ['panel/delete-project', 'id' => $project->id], [
+                                                    'class' => 'text-slate-400 dark:text-slate-500 hover:text-rose-500 transition duration-150',
+                                                    'data' => [
+                                                        'confirm' => 'Tem certeza de que deseja excluir este item?',
+                                                        'method' => 'post',
+                                                    ],
+                                                    'title' => 'Excluir'
+                                                ]) ?>
+                                            <?php else: ?>
+                                                <span class="text-[10px] text-slate-400 dark:text-slate-600 uppercase font-bold tracking-wider italic">Somente Admin</span>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

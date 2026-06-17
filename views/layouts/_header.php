@@ -41,6 +41,16 @@ $items = [
         'url' => ['/panel/index'],
         'visible' => !Yii::$app->user->isGuest,
     ],
+    [
+        'label' => 'Perfil',
+        'url' => ['/panel/profile'],
+        'visible' => !Yii::$app->user->isGuest,
+    ],
+    [
+        'label' => 'Usuários',
+        'url' => ['/panel/users'],
+        'visible' => (!Yii::$app->user->isGuest && Yii::$app->user->identity?->role === 'admin'),
+    ],
 
     [
         'label' => 'Logout (' . Html::encode(Yii::$app->user->identity?->username ?? '') . ')',

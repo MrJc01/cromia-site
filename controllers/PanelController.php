@@ -7,10 +7,12 @@ namespace app\controllers;
 use Yii;
 use app\models\Article;
 use app\models\ProjectService;
+use app\models\User;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\web\Response;
 
 class PanelController extends Controller
@@ -26,7 +28,15 @@ class PanelController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        'actions' => ['index', 'create-article', 'update-article', 'delete-article', 'profile'],
                         'roles' => ['@'], // Only logged-in users
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create-project', 'update-project', 'delete-project', 'users'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity?->role === 'admin';
+                        },
                     ],
                 ],
             ],
@@ -62,7 +72,8 @@ class PanelController extends Controller
     {
         $model = new Article();
         // Default values for fields
-        $model->author_group = 'CromIA Core';
+        $model->author_group = Yii::$app->user->identity->username;
+        $model->author_id = Yii::$app->user->id;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -84,6 +95,11 @@ class PanelController extends Controller
     {
         $model = $this->findArticle((int)$id);
 
+        // Authorization check: only admin or the article owner can update
+        if (Yii::$app->user->identity->role !== 'admin' && (int)$model->author_id !== (int)Yii::$app->user->id) {
+            throw new ForbiddenHttpException('Você não tem permissão para editar este artigo.');
+        }
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 Yii::$app->session->setFlash('success', 'Artigo atualizado com sucesso.');
@@ -103,6 +119,12 @@ class PanelController extends Controller
     public function actionDeleteArticle($id): Response
     {
         $model = $this->findArticle((int)$id);
+
+        // Authorization check: only admin or the article owner can delete
+        if (Yii::$app->user->identity->role !== 'admin' && (int)$model->author_id !== (int)Yii::$app->user->id) {
+            throw new ForbiddenHttpException('Você não tem permissão para excluir este artigo.');
+        }
+
         $model->delete();
         Yii::$app->session->setFlash('success', 'Artigo excluído com sucesso.');
         return $this->redirect(['index']);
@@ -160,6 +182,41 @@ class PanelController extends Controller
         $model->delete();
         Yii::$app->session->setFlash('success', 'Projeto/Serviço excluído com sucesso.');
         return $this->redirect(['index']);
+    }
+
+    /**
+     * List all users (admin only)
+     * @return string
+     */
+    public function actionUsers(): string
+    {
+        $users = User::find()->orderBy(['created_at' => SORT_DESC])->all();
+        return $this->render('users', [
+            'users' => $users,
+        ]);
+    }
+
+    /**
+     * User profile update (email, bio, password)
+     */
+    public function actionProfile()
+    {
+        /** @var User $model */
+        $model = Yii::$app->user->identity;
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash('success', 'Perfil atualizado com sucesso.');
+                return $this->refresh();
+            }
+        }
+
+        $model->new_password = '';
+        $model->confirm_password = '';
+
+        return $this->render('profile', [
+            'model' => $model,
+        ]);
     }
 
     /**

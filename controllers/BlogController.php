@@ -52,4 +52,24 @@ class BlogController extends Controller
             'htmlContent' => $htmlContent,
         ]);
     }
+
+    /**
+     * View author profile and their articles
+     */
+    public function actionAuthor(int $id): string
+    {
+        $author = \app\models\User::findOne($id);
+        if ($author === null) {
+            throw new NotFoundHttpException('O autor solicitado não existe.');
+        }
+
+        $articles = Article::find()->where(['author_id' => $id])->orderBy(['created_at' => SORT_DESC])->all();
+
+        $this->view->title = 'Perfil de ' . $author->username . ' - CromIA';
+
+        return $this->render('author', [
+            'author' => $author,
+            'articles' => $articles,
+        ]);
+    }
 }

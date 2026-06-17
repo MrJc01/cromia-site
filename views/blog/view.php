@@ -23,9 +23,15 @@ use yii\helpers\Url;
     <header class="mb-12 border-b border-slate-200 dark:border-white/5 pb-8">
         <!-- Metadata -->
         <div class="flex items-center gap-3 mb-4 text-xs font-mono">
-            <span class="px-2.5 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-semibold uppercase tracking-wider">
-                <?= Html::encode($article->author_group) ?>
-            </span>
+            <?php if ($article->author): ?>
+                <a href="<?= Url::to(['blog/author', 'id' => $article->author_id]) ?>" class="px-2.5 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-semibold uppercase tracking-wider hover:bg-rose-500/20 transition">
+                    <?= Html::encode($article->author->username) ?>
+                </a>
+            <?php else: ?>
+                <span class="px-2.5 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-semibold uppercase tracking-wider">
+                    <?= Html::encode($article->author_group) ?>
+                </span>
+            <?php endif; ?>
             <span class="text-slate-500"><?= date('d \d\e F \d\e Y', $article->created_at) ?></span>
         </div>
 
@@ -53,8 +59,19 @@ use yii\helpers\Url;
             <i data-lucide="users" class="w-6 h-6"></i>
         </div>
         <div>
-            <div class="text-sm font-bold text-slate-900 dark:text-white">Escrito por <?= Html::encode($article->author_group) ?></div>
-            <div class="text-xs text-slate-500">Divisão de IA da organização Crom. Desenvolvendo o futuro soberano.</div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">
+                Escrito por 
+                <?php if ($article->author): ?>
+                    <a href="<?= Url::to(['blog/author', 'id' => $article->author_id]) ?>" class="text-rose-650 dark:text-rose-400 hover:underline">
+                        <?= Html::encode($article->author->username) ?>
+                    </a>
+                <?php else: ?>
+                    <?= Html::encode($article->author_group) ?>
+                <?php endif; ?>
+            </div>
+            <div class="text-xs text-slate-500">
+                <?= $article->author && $article->author->bio_description ? Html::encode($article->author->bio_description) : 'Divisão de IA da organização Crom. Desenvolvendo o futuro soberano.' ?>
+            </div>
         </div>
     </div>
 </div>
