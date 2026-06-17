@@ -33,9 +33,15 @@ use yii\helpers\Url;
                 <div>
                     <!-- Meta info -->
                     <div class="flex items-center gap-3 mb-4 text-xs font-mono">
-                        <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-rose-600 dark:text-rose-400 border border-slate-200 dark:border-slate-800 font-semibold uppercase tracking-wider">
-                            <?= Html::encode($article->author_group) ?>
-                        </span>
+                        <?php if ($article->author): ?>
+                            <a href="<?= Url::to(['blog/author', 'id' => $article->author_id]) ?>" class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-rose-600 dark:text-rose-400 border border-slate-200 dark:border-slate-800 font-semibold uppercase tracking-wider hover:bg-rose-500/10 transition">
+                                <?= Html::encode($article->author->username) ?>
+                            </a>
+                        <?php else: ?>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-rose-600 dark:text-rose-400 border border-slate-200 dark:border-slate-800 font-semibold uppercase tracking-wider">
+                                <?= Html::encode($article->author_group) ?>
+                            </span>
+                        <?php endif; ?>
                         <span class="text-slate-500"><?= date('d/m/Y', $article->created_at) ?></span>
                     </div>
 

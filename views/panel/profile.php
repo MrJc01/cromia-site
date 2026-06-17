@@ -45,12 +45,8 @@ $this->title = 'Editar Perfil - CromIA';
         ]); ?>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Username (read-only) -->
-            <div class="flex flex-col gap-1.5">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Usuário</label>
-                <input type="text" class="bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-white/5 rounded-xl px-4 py-3 text-slate-500 dark:text-slate-500 w-full font-light cursor-not-allowed" value="<?= Html::encode($model->username) ?>" readonly>
-                <div class="text-[10px] text-slate-400 font-light mt-0.5">O nome de usuário não pode ser alterado.</div>
-            </div>
+            <!-- Username -->
+            <?= $form->field($model, 'username')->textInput(['placeholder' => 'Nome de usuário']) ?>
 
             <!-- Email -->
             <?= $form->field($model, 'email')->textInput(['placeholder' => 'seu-email@dominio.com', 'type' => 'email']) ?>
