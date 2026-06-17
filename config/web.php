@@ -57,6 +57,7 @@ $config = [
                 'blog' => 'blog/index',
                 'blog/<slug:[\w-]+>' => 'blog/view',
                 'projects' => 'projects/index',
+                'agent' => 'site/agent',
             ],
         ],
     ],

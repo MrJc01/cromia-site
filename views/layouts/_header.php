@@ -25,6 +25,10 @@ $items = [
         'url' => ['/projects/index'],
     ],
     [
+        'label' => 'Agente',
+        'url' => ['/site/agent'],
+    ],
+    [
         'label' => 'Apoiar',
         'url' => 'https://crom.run/apoio',
         'linkOptions' => [

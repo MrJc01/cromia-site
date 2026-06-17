@@ -161,4 +161,14 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    /**
+     * Displays agent page.
+     *
+     * @return string
+     */
+    public function actionAgent(): string
+    {
+        return $this->render('agent');
+    }
 }
