@@ -10,13 +10,15 @@ class m260618_015518_add_cromia_cloud_to_products extends Migration
     public function safeUp()
     {
         $this->insert('project_service', [
-            'title' => 'CromIA Cloud',
+            'name' => 'CromIA Cloud',
             'slug' => 'cromia-cloud',
-            'category' => 'product',
+            'type' => 'product',
             'status' => 'beta',
             'description' => 'A plataforma em nuvem oficial para carteira unificada (PIX e Cartão), gerenciamento de chaves mestras e roteamento seguro para seus agentes locais.',
-            'icon' => '☁️',
-            'link' => 'https://cloud.ia.crom.run/',
+            'icon_emoji' => '☁️',
+            'link_url' => 'https://cloud.ia.crom.run/',
+            'created_at' => time(),
+            'updated_at' => time(),
         ]);
     }
 
