@@ -196,6 +196,43 @@ $this->title = 'CROM Agent - Orquestrador Local de Agentes Autônomos';
         </div>
     </div>
 
+    <!-- REPOSITÓRIOS GITHUB -->
+    <div class="py-16 border-t border-slate-200 dark:border-white/5">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs font-bold tracking-widest text-emerald-500 uppercase">Open Source</span>
+            <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">Repositórios Disponíveis</h2>
+            <p class="mt-4 text-slate-600 dark:text-slate-400 font-light">
+                Acesse o código-fonte dos componentes principais do ecossistema no GitHub.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="https://github.com/MrJc01/crom-agente" target="_blank" rel="noopener" class="group block p-6 bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl hover:border-emerald-500/30 shadow-sm hover:shadow-emerald-500/10 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <i data-lucide="github" class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-500 transition-colors"></i>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-400 transition-colors">crom-agente</h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Daemon Go que gerencia agentes locais, terminais (PTY) e chamadas a modelos IA.</p>
+            </a>
+
+            <a href="https://github.com/MrJc01/crom-agente-cli" target="_blank" rel="noopener" class="group block p-6 bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl hover:border-emerald-500/30 shadow-sm hover:shadow-emerald-500/10 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <i data-lucide="terminal" class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-500 transition-colors"></i>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-400 transition-colors">crom-agente-cli</h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Interface de linha de comando para interagir diretamente com o daemon do agente.</p>
+            </a>
+
+            <a href="https://github.com/MrJc01/crom-agente-sdk" target="_blank" rel="noopener" class="group block p-6 bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-white/5 rounded-2xl hover:border-emerald-500/30 shadow-sm hover:shadow-emerald-500/10 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <i data-lucide="code" class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-500 transition-colors"></i>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-400 transition-colors">crom-agente-sdk</h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Bibliotecas e documentação para integrar as funcionalidades do agente em outras aplicações.</p>
+            </a>
+        </div>
+    </div>
+
     <!-- SCREENSHOTS SHOWCASE (TABBED INTERACTIVE SECTION) -->
     <div class="py-16 border-t border-slate-200 dark:border-white/5">
         <div class="text-center max-w-3xl mx-auto mb-12">
