@@ -29,6 +29,15 @@ $items = [
         'url' => ['/site/agent'],
     ],
     [
+        'label' => 'Cloud ☁️',
+        'url' => 'https://cloud.ia.crom.run',
+        'linkOptions' => [
+            'target' => '_blank',
+            'rel' => 'noopener',
+            'class' => 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400',
+        ],
+    ],
+    [
         'label' => 'Apoiar',
         'url' => 'https://crom.run/apoio',
         'linkOptions' => [
