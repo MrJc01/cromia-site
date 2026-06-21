@@ -16,14 +16,29 @@ $this->render('_head');
 <head>
     <?php $this->head() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <!-- SEO & OpenGraph Meta Tags -->
+    <meta property="og:title" content="<?= Html::encode($this->title) ?>">
+    <meta property="og:description" content="Ecossistema Híbrido de Inteligência Artificial: Agente Local e Nuvem SaaS.">
+    <meta property="og:image" content="<?= yii\helpers\Url::to('@web/images/og-image.png', true) ?>">
+    <meta property="og:url" content="<?= yii\helpers\Url::current([], true) ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= Html::encode($this->title) ?>">
+    <meta name="twitter:description" content="Ecossistema Híbrido de Inteligência Artificial: Agente Local e Nuvem SaaS.">
+    <meta name="twitter:image" content="<?= yii\helpers\Url::to('@web/images/og-image.png', true) ?>">
+
+    <!-- Favicon HD -->
+    <link rel="icon" type="image/x-icon" href="<?= yii\helpers\Url::to('@web/favicon.ico') ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= yii\helpers\Url::to('@web/favicon-32x32.png') ?>">
     
-    <!-- Modern typography from crom.run -->
+    <!-- Modern typography from crom.run (Preload for LCP Optimization) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
-    <!-- Material Symbols for Rose Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Material Symbols for Rose Icons (Preload) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" media="print" onload="this.media='all'" />
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>

@@ -57,6 +57,57 @@ $this->title = 'CROM | Autonomia Técnica e Soberania Digital - CromIA';
             </a>
         </div>
 
+        <!-- Diagrama Animado do Ecossistema: Cloud <-> SDK <-> Daemon -->
+        <div class="mt-8 mb-12 flex flex-col items-center">
+            <p class="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold mb-6">Nosso Ecossistema</p>
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 bg-slate-50/50 dark:bg-slate-950/30 p-6 rounded-3xl border border-slate-200 dark:border-white/5 backdrop-blur-sm">
+                <!-- Cloud SaaS -->
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white dark:bg-slate-900 shadow-xl border border-slate-100 dark:border-slate-800 flex items-center justify-center">
+                        <i data-lucide="cloud" class="w-8 h-8 text-blue-500 animate-pulse"></i>
+                    </div>
+                    <span class="mt-3 text-xs font-bold text-slate-700 dark:text-slate-300">Cloud SaaS</span>
+                </div>
+
+                <!-- Seta Animada 1 -->
+                <div class="flex flex-col items-center text-slate-400 dark:text-slate-600 px-2 hidden md:flex">
+                    <i data-lucide="arrow-right-left" class="w-5 h-5"></i>
+                    <span class="text-[10px] font-mono mt-1 font-bold text-amber-500">HTTP / WS</span>
+                </div>
+                <!-- Seta Mobile -->
+                <div class="flex md:hidden text-slate-400 dark:text-slate-600">
+                    <i data-lucide="arrow-down-up" class="w-5 h-5"></i>
+                </div>
+
+                <!-- SDK -->
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white dark:bg-slate-900 shadow-xl border border-slate-100 dark:border-slate-800 flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-8 h-8 text-amber-500"></i>
+                    </div>
+                    <span class="mt-3 text-xs font-bold text-slate-700 dark:text-slate-300">SDK Multi-Lang</span>
+                </div>
+
+                <!-- Seta Animada 2 -->
+                <div class="flex flex-col items-center text-slate-400 dark:text-slate-600 px-2 hidden md:flex">
+                    <i data-lucide="arrow-right-left" class="w-5 h-5"></i>
+                    <span class="text-[10px] font-mono mt-1 font-bold text-rose-500">Local TCP</span>
+                </div>
+                <!-- Seta Mobile -->
+                <div class="flex md:hidden text-slate-400 dark:text-slate-600">
+                    <i data-lucide="arrow-down-up" class="w-5 h-5"></i>
+                </div>
+
+                <!-- Computador Local -->
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white dark:bg-slate-900 shadow-xl border border-rose-500/30 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-rose-500/10 animate-pulse"></div>
+                        <i data-lucide="cpu" class="w-8 h-8 text-rose-500 relative z-10"></i>
+                    </div>
+                    <span class="mt-3 text-xs font-bold text-slate-700 dark:text-slate-300">Daemon Local</span>
+                </div>
+            </div>
+        </div>
+
         <!-- Metrics Stats -->
         <div class="grid grid-cols-3 gap-8 md:gap-16 mt-16 max-w-xl w-full border-t border-slate-200 dark:border-white/5 pt-8 font-mono">
             <div class="text-center">
