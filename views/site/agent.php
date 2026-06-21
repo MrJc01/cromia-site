@@ -75,15 +75,16 @@ $this->title = 'CROM Agent - Orquestrador Local de Agentes Autônomos';
 
         <!-- CTA Buttons -->
         <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-4">
-            <a href="#downloads" 
-               class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all duration-300 text-center transform hover:-translate-y-0.5">
-                Obter Acesso
+            <a href="https://cloud.ia.crom.run" target="_blank" rel="noopener"
+               class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 transition-all duration-300 text-center transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                <i data-lucide="cloud" class="w-5 h-5"></i> Acessar Portal Cloud
             </a>
             <a href="#arquitetura" 
                class="w-full sm:w-auto px-8 py-4 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900/60 dark:hover:bg-slate-900 border border-slate-200 dark:border-white/5 text-slate-700 dark:text-slate-200 font-semibold rounded-xl transition-all duration-300 text-center backdrop-blur-sm">
                 Ver Arquitetura
             </a>
         </div>
+        <p class="mt-4 text-sm text-cyan-600 dark:text-cyan-400 font-medium animate-pulse">⚠️ Sistema atualmente em Fase Alpha Pública</p>
     </div>
 
     <!-- ROADMAP / MODELO DE DISPONIBILIZAÇÃO -->
@@ -182,11 +183,11 @@ $this->title = 'CROM Agent - Orquestrador Local de Agentes Autônomos';
                 </div>
                 <div>
                     <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 mb-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span> Lançamento Beta em Breve
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span> Fase Alpha Ativa
                     </span>
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Estamos nos preparando para o lançamento da versão Beta!</h4>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Tudo o que você precisa está no Portal Cloud!</h4>
                     <p class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">
-                        Nosso objetivo de longo prazo é a soberania tecnológica. Temos o plano de desenvolver LLMs próprias sob diferentes arquiteturas de estudo avançadas. Para viabilizar esse projeto e construir **LLMs especialistas únicas no Brasil e no mundo**, precisamos de financiamento e suporte monetário para custos de GPU e pesquisa. Ajude-nos a financiar essa jornada apoiando o projeto!
+                        Atualmente o ecossistema encontra-se em <strong>Alpha</strong>. Toda a documentação (SDK, Daemon, CLI), os downloads oficiais e as atualizações automáticas estão centralizadas na <a href="https://cloud.ia.crom.run" target="_blank" class="text-cyan-500 hover:underline font-bold">CromIA Cloud</a>. Crie sua conta e ajude-nos a financiar essa jornada apoiando o projeto!
                     </p>
                 </div>
             </div>
